@@ -22,7 +22,7 @@ module HerokuConfigVars
         end
 
         it { should be_a_kind_of HerokuApp }
-        it { puts subject.to_yaml; should be_loaded }
+        it { should be_loaded }
 
         its(:vars) { should be_present }
         its(:api_key) { should eq 'valid-api-key'}
