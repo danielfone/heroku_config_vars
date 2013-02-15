@@ -9,7 +9,7 @@ module HerokuConfigVars
     private
 
       def recommend_https
-        return render :recommend_https
+        render :recommend_https
       end
 
       def insecure?
