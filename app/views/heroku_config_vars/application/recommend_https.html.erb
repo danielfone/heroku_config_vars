@@ -1,0 +1,6 @@
+<h2>WARNING</h2>
+
+<p>You are trying to view sensitive application configuration over an <strong>insecure connection</strong>.</p>
+<p>It is highly recommended that you view this over https.</p>
+<%= link_to 'Switch to secure connection', {only_path: false, protocol: 'https'}, class: 'happy button' %>
+<%= link_to 'Continue insecurely', {insecure: :ok}, class: 'sad button' %>
