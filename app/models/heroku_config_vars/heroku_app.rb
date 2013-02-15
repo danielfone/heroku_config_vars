@@ -23,9 +23,7 @@ module HerokuConfigVars
         api_key:  ENV['HEROKU_API_KEY']
       }
 
-      new(attrs) do |app|
-        app.load_vars if app.valid?
-      end
+      new attrs
     end
 
     def initialize(attrs={})
@@ -33,8 +31,10 @@ module HerokuConfigVars
       @loaded = false
 
       self.attributes = attrs
-      load_vars if valid?
-      @vars.merge! 'HEROKU_APP_NAME' => app_name, 'HEROKU_API_KEY' => api_key
+      if valid?
+        load_vars 
+        @vars.merge! 'HEROKU_APP_NAME' => app_name, 'HEROKU_API_KEY' => api_key
+      end
 
       yield self if block_given?
     end

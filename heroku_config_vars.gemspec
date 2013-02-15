@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "heroku-api", "~> 0.3.0"
 
-  s.add_development_dependency "sqlite3" # to remove
   s.add_development_dependency "rspec-rails", "~> 2.12.0"
+  s.add_development_dependency 'webmock', '~> 1.9.0'
 end
