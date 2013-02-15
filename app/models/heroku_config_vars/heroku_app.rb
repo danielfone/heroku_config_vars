@@ -23,7 +23,9 @@ module HerokuConfigVars
         api_key:  ENV['HEROKU_API_KEY']
       }
 
-      new attrs
+      new(attrs) do |app|
+        app.load_vars if app.valid?
+      end
     end
 
     def initialize(attrs={})

@@ -1,7 +1,11 @@
 module HerokuConfigVars
   class ApplicationController < ActionController::Base
 
-      before_filter :recommend_https, :if => :insecure?
+    before_filter :recommend_https, :if => :insecure?
+
+    def env
+      @env = ENV
+    end
 
     protected
 

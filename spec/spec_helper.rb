@@ -28,4 +28,6 @@ RSpec.configure do |config|
     # Disable old-style `should` syntax
     c.syntax = :expect
   end
+
+  config.include HerokuConfigVars::Engine.routes.url_helpers
 end
