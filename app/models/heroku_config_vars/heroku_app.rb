@@ -33,10 +33,6 @@ module HerokuConfigVars
       @loaded = false
 
       self.attributes = attrs
-      if valid?
-        load_vars 
-        @vars.merge! 'HEROKU_APP_NAME' => app_name, 'HEROKU_API_KEY' => api_key
-      end
 
       yield self if block_given?
     end

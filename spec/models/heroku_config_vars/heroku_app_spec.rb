@@ -33,17 +33,23 @@ module HerokuConfigVars
         it { should be_a_kind_of HerokuApp }
         its(:app_name) { should be_nil }
         its(:api_key) { should be_nil }
+
+        specify('no request made') do
+          expect(a_request :any, "api.heroku.com").not_to have_been_made
+        end
       end
 
-      context 'with ENV set' do
+      context 'with valid ENV set' do
         before do
           ENV['HEROKU_APP_NAME'] = app_name
           ENV['HEROKU_API_KEY']  = api_key
         end
 
         it { should be_a_kind_of HerokuApp }
+        it { should be_loaded }
+
         its(:api_key) { should eq api_key }
-        its(:app_name) { should eq app_name }
+        its(:app_name) { should eq app_name }        
       end
 
     end
@@ -60,13 +66,7 @@ module HerokuConfigVars
         it { should have(1).error_on(:app_name) }
         it { should have(1).error_on(:api_key) }
         it { should_not be_loaded }
-
         its(:vars) { should be_empty }
-        
-
-        specify('no request made') do
-          expect(a_request :any, "api.heroku.com").not_to have_been_made
-        end
       end
 
       context 'with valid credentials' do
@@ -78,9 +78,16 @@ module HerokuConfigVars
         end
 
         it { should be_valid }
-        it { should be_loaded }
-        its(:vars) { should be_present }
+        it { should_not be_loaded }
+        its(:vars) { should be_empty }
       end
+    end
+
+    describe '#attributes=' do
+      subject(:app) { described_class.new }
+      before { app.attributes = {:api_key => 'foo'} }
+
+      its(:api_key) { should eq 'foo' }
     end
 
     describe '#load_vars' do
@@ -89,6 +96,17 @@ module HerokuConfigVars
       context 'with invalid api key'
       context 'with no config set'
       context 'with config'
+    end
+
+    describe '#save'
+
+    context 'with var changes' do
+      describe '#removed_vars'
+      describe '#added_vars'
+      describe '#kept_vars'
+      describe '#updated_vars'
+      describe '#updated_and_added_vars'
+      describe '#changes'
     end
 
 #    context 'with an invalid api_key' do
