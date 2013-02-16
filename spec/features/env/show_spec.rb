@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Show full ENV" do
+feature "Show ENV" do
 
   before do
     ENV['FOO'] = 'bar'
