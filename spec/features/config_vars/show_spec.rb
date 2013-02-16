@@ -22,6 +22,11 @@ feature "Show heroku config vars" do
     ENV['HEROKU_API_KEY']  = valid_api_key
   end
 
+  after do
+    ENV.delete 'HEROKU_APP_NAME'
+    ENV.delete 'HEROKU_API_KEY'
+  end
+
   let(:live_vars) do
     {
       'VAR3' => 'value 3',
