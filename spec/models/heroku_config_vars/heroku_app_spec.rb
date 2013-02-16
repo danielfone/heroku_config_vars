@@ -100,7 +100,35 @@ module HerokuConfigVars
 
     describe '#save'
 
-    context 'with var changes' do
+    context 'with changed `vars`' do
+      before do
+        stub_request(:get, "https://api.heroku.com/apps/#{app_name}/config_vars").
+          with(headers: {'Authorization'=>auth}).
+          to_return(headers: {
+            'Content-Type' => 'application/json'
+          }, body: <<-RESPONSE
+            {
+              'VAR1': 'value 1',
+              'VAR2': 'value 2',
+              'VAR3': 'value 3',
+              'VAR4': 'value 4',
+            }
+          RESPONSE
+          )
+      end
+
+      let(:app) { described_class.new(api_key: api_key, app_name: app_name) { |app| app.load_vars } }
+
+      before do
+        puts app.vars
+        app.vars = {
+          'VAR2' => 'value 2',
+          'VAR3' => 'value 33',
+          'VAR4' => 'value 44',
+          'VAR5' => 'value 5'
+        }
+      end
+
       describe '#removed_vars'
       describe '#added_vars'
       describe '#kept_vars'

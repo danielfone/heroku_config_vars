@@ -46,7 +46,7 @@ module HerokuConfigVars
     def load_vars
       catch_heroku_errors do
         Rails.logger.debug 'Loading config'
-        @vars = Hash[connection.get_config_vars(app_name).body.sort]
+        @vars = connection.get_config_vars(app_name).body
         @current_vars = @vars.dup.freeze
         @loaded = true
       end
