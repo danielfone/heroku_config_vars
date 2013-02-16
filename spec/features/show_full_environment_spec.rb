@@ -9,8 +9,8 @@ feature "Show full ENV" do
   scenario "Visit env path" do
     visit env_url(protocol: 'https')
 
-    expect(page).to have_text 'ENV'
-    expect(page).to have_text 'FOO'
-    expect(page).to have_text 'bar'
+    expect(page).to have_selector 'h2', text: 'ENV'
+    expect(page).to have_selector 'th', text: 'FOO'
+    expect(page).to have_selector 'td', text: 'bar'
   end
 end
