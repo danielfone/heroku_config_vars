@@ -33,6 +33,7 @@ feature 'New app' do
     click_button 'Save'
 
     expect(page).to have_selector 'h2', text: valid_app_name
+    expect(page).to have_text valid_api_key
     expect(current_path).to eq heroku_app_path
   end
 
