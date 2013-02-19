@@ -1,0 +1,54 @@
+.button {
+  color: #fff;
+  border: 1px solid;
+  border-radius: 3px;
+  text-align: center;
+  padding: 5px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: visible;
+  text-decoration: none;
+
+  &.happy {
+    $hue-adjustment: 260;
+    border-top-color:     adjust-hue(#2270ab, $hue-adjustment);
+    border-right-color:   adjust-hue(#18639a, $hue-adjustment);
+    border-bottom-color:  adjust-hue(#0f568b, $hue-adjustment);
+    border-left-color:    adjust-hue(#18639a, $hue-adjustment);
+    background: adjust-hue(#2180ce, $hue-adjustment);
+    background: -webkit-gradient(linear, left top, left bottom, from(adjust-hue(#33a0e8, $hue-adjustment)), to(adjust-hue(#2180ce, $hue-adjustment)));
+    text-shadow: adjust-hue(#355782, $hue-adjustment) 0 1px 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px adjust-hue(#83c5f1, $hue-adjustment);
+
+    &:hover {
+      border-top-color:     adjust-hue(#0070cc, $hue-adjustment);
+      border-right-color:   adjust-hue(#006ac1, $hue-adjustment);
+      border-bottom-color:  adjust-hue(#005ca6, $hue-adjustment);
+      border-left-color:    adjust-hue(#006ac1, $hue-adjustment);
+      box-shadow: 0 1px 1px rgba(0,0,0,0.3),inset 0 0 3px adjust-hue(#35bff4, $hue-adjustment);
+      background: -webkit-gradient(linear, left top, left bottom, from(adjust-hue(#43b0f8, $hue-adjustment)), to(adjust-hue(#3190de, $hue-adjustment)));
+    }
+  }
+
+  &.sad {
+    $hue-adjustment: 150;
+    border-top-color:     adjust-hue(#2270ab, $hue-adjustment);
+    border-right-color:   adjust-hue(#18639a, $hue-adjustment);
+    border-bottom-color:  adjust-hue(#0f568b, $hue-adjustment);
+    border-left-color:    adjust-hue(#18639a, $hue-adjustment);
+    background: adjust-hue(#2180ce, $hue-adjustment);
+    background: -webkit-gradient(linear, left top, left bottom, from(adjust-hue(#33a0e8, $hue-adjustment)), to(adjust-hue(#2180ce, $hue-adjustment)));
+    text-shadow: adjust-hue(#355782, $hue-adjustment) 0 1px 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px adjust-hue(#83c5f1, $hue-adjustment);
+
+    &:hover {
+      border-top-color:     adjust-hue(#0070cc, $hue-adjustment);
+      border-right-color:   adjust-hue(#006ac1, $hue-adjustment);
+      border-bottom-color:  adjust-hue(#005ca6, $hue-adjustment);
+      border-left-color:    adjust-hue(#006ac1, $hue-adjustment);
+      box-shadow: 0 1px 1px rgba(0,0,0,0.3),inset 0 0 3px adjust-hue(#35bff4, $hue-adjustment);
+      background: -webkit-gradient(linear, left top, left bottom, from(adjust-hue(#43b0f8, $hue-adjustment)), to(adjust-hue(#3190de, $hue-adjustment)));
+    }
+  }
+}

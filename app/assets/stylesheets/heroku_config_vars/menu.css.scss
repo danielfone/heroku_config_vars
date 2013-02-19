@@ -1,0 +1,36 @@
+ul.submenu {
+  height: 32px;
+  list-style: none;
+  margin: 0 -20px;
+  padding: 0 20px;
+  background: #eee;
+  border-bottom: 1px #ccc solid;
+  clear: both;
+
+  li.admin {
+    float: right;
+  }
+  .menu-option {
+    font-size: 16px;
+    float: left;
+    padding: 0.25em 1em;
+    margin: 5px 10px -1px 0;
+    border: 1px solid #ccc;
+    height: 18px;
+    border-bottom-color: #fff;
+    background: #fff;
+  }
+
+  a {
+    padding: 0;
+  }
+
+  a .menu-option {
+    border-bottom: none;
+  }
+
+  a:hover .menu-option {
+    background: #aaa;
+  }
+
+}

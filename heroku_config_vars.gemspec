@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'webmock', '~> 1.9.0'
   s.add_development_dependency 'capybara', '~> 2.0.0'
   s.add_development_dependency 'launchy', '~> 2.2.0'
+  s.add_development_dependency 'sass-rails', '~> 3.2.0' # TODO: get rid of this
 end

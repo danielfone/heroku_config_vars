@@ -1,0 +1,28 @@
+table {
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+  }
+
+  td, th {
+    border: 1px #ccc;
+    border-style: solid none;
+    padding: 0.5em;
+  }
+
+  input {
+    padding: 0.25em;
+  }
+
+  input.new_value,
+  input.var_value {
+    width: 50em;
+  }
+
+  tr.deleted, tr.deleted input {
+    text-decoration: line-through;
+    color: #bbb;
+  }
+}
+

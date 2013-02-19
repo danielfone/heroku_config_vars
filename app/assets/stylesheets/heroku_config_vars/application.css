@@ -11,3 +11,21 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  font-family: helvetica;
+  font-size: smaller;
+}
+
+a {
+  color: #66f;
+  text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    background-color: #66f; }
+
+label {
+  cursor: pointer;
+}
