@@ -9,7 +9,6 @@ module HerokuConfigVars
     attr_reader :loaded
     attr_reader :current_vars
 
-#    alias_method :id,         :app_name
     alias_method :loaded?,    :loaded
     alias_method :persisted?, :loaded
 
