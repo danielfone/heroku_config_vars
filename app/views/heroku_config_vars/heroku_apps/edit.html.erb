@@ -8,9 +8,9 @@
 
 <%= form_for @heroku_app, url: heroku_app_path do |f| %>
   <table>
-    <%- @heroku_app.vars.each do |key, value| -%>
+    <%- @heroku_app.vars.sort.each do |key, value| -%>
       <tr>
-        <th><%= key %></th>
+        <th><%= label_tag "heroku_app[vars][#{key}]", key %></th>
         <td><%= text_field_tag "heroku_app[vars][#{key}]", value, class: 'var_value' %></td>
         <td class="delete">
           <%= label_tag "remove[#{key}]" do %>
