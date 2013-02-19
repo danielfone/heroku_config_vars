@@ -3,11 +3,7 @@ require 'spec_helper'
 feature "Show heroku config vars" do
 
   stub_heroku_responses
-
-  before do
-    ENV['HEROKU_APP_NAME'] = valid_app_name
-    ENV['HEROKU_API_KEY']  = valid_api_key
-  end
+  setup_app
 
   let(:live_vars) do
     {

@@ -1,0 +1,37 @@
+<h2>
+  <%= link_to @heroku_app.app_name, heroku_app_path %>
+  &rarr;
+  Edit Configuration
+</h2>
+
+<%= render 'errors', heroku_app: @heroku_app if @heroku_app.errors.any? %>
+
+<%= form_for @heroku_app, url: heroku_app_path do |f| %>
+  <table>
+    <%- @heroku_app.vars.each do |key, value| -%>
+      <tr>
+        <th><%= key %></th>
+        <td><%= text_field_tag "heroku_app[vars][#{key}]", value, class: 'var_value' %></td>
+        <td class="delete">
+          <%= label_tag "remove[#{key}]" do %>
+            <%= check_box_tag "remove[#{key}]" %>
+            Delete
+          <%- end -%>
+        </td>
+      </tr>
+    <%- end -%>
+    <tr class="new">
+      <th><%= text_field_tag "add[][key]", nil, id: nil, class: 'new_key' %></th>
+      <td><%= text_field_tag "add[][value]", nil, id: nil, class: 'new_value' %></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <p>
+    <%= f.submit "Prepare..." %>
+  </p>
+<%- end -%>
+
+<p>
+  <%= link_to 'Cancel', heroku_app_path %>
+</p>

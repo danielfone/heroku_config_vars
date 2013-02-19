@@ -58,6 +58,10 @@ module HerokuConfigVars
       @api_key = @vars['HEROKU_API_KEY'] = value
     end
 
+    def id
+      app_name
+    end
+
     def load_vars
       catch_heroku_errors do
         Rails.logger.debug 'Loading config'

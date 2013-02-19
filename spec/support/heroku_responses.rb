@@ -1,5 +1,6 @@
 module HerokuResponses
   module ClassMethods
+
     def stub_heroku_responses
       let(:valid_app_name) { 'valid_app_name' }
       let(:valid_api_key)  { 'valid_api_key' }
@@ -15,9 +16,14 @@ module HerokuResponses
           with(headers: { 'Authorization' => valid_auth }).
           with(body: live_vars.to_json).
           to_return(:status => 200, :body => "", :headers => {})
-
       end
+    end
 
+    def setup_app
+      before do
+        ENV['HEROKU_APP_NAME'] = valid_app_name
+        ENV['HEROKU_API_KEY']  = valid_api_key
+      end
     end
   end
 end
