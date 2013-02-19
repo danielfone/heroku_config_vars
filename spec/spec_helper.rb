@@ -10,7 +10,7 @@ Rails.backtrace_cleaner.remove_silencers!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| puts f; require f }
 
 RSpec.configure do |config|
   # If true, the base class of anonymous controllers will be inferred
@@ -30,4 +30,10 @@ RSpec.configure do |config|
   end
 
   config.include HerokuConfigVars::Engine.routes.url_helpers
+  config.extend HerokuResponses::ClassMethods
+
+  config.after do
+    ENV.delete 'HEROKU_APP_NAME'
+    ENV.delete 'HEROKU_API_KEY'
+  end
 end

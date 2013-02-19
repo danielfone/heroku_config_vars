@@ -3,6 +3,19 @@ module HerokuConfigVars
 
     before_filter :require_heroku_app, :only => [:show, :edit, :update]
 
+    def new
+      @heroku_app = HerokuApp.find
+    end
+
+    def create
+      @heroku_app = HerokuApp.new params[:heroku_app]
+      if @heroku_app.save
+        redirect_to heroku_app_path
+      else
+        render :new
+      end
+    end
+
     private
 
       def require_heroku_app

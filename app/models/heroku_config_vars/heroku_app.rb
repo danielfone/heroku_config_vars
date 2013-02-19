@@ -4,13 +4,12 @@ module HerokuConfigVars
     include ActiveModel::Conversion
     include ActiveModel::Validations
 
-    attr_accessor :api_key, :app_name
     attr_accessor :vars
 
     attr_reader :loaded
     attr_reader :current_vars
 
-    alias_method :id,         :app_name
+#    alias_method :id,         :app_name
     alias_method :loaded?,    :loaded
     alias_method :persisted?, :loaded
 
@@ -30,6 +29,7 @@ module HerokuConfigVars
 
     def initialize(attrs={})
       @vars = {}
+      @current_vars = {}
       @loaded = false
 
       self.attributes = attrs
@@ -41,6 +41,22 @@ module HerokuConfigVars
       attrs.each do |key, value|
         self.send "#{key}=", value
       end
+    end
+
+    def app_name
+      @app_name ||= @vars['HEROKU_APP_NAME'].presence
+    end
+
+    def app_name=(value)
+      @app_name = @vars['HEROKU_APP_NAME'] = value
+    end
+
+    def api_key
+      @api_key ||= @vars['HEROKU_API_KEY'].presence
+    end
+
+    def api_key=(value)
+      @api_key = @vars['HEROKU_API_KEY'] = value
     end
 
     def load_vars

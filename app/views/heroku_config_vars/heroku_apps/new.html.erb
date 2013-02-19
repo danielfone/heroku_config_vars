@@ -1,0 +1,21 @@
+<h2>One Time Setup</h2>
+
+<%= render 'errors', heroku_app: @heroku_app if @heroku_app.errors.any? %>
+
+<%= form_for @heroku_app, url: heroku_app_path do |f| %>
+  <h3>Connection Details</h3>
+  <table>
+    <tr>
+      <th><%= f.label :app_name, "App Name" %></th>
+      <td><%= f.text_field :app_name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :api_key, "API Key" %></th>
+      <td><%= f.text_field :api_key %></td>
+    </tr>
+  </table>
+
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<%- end -%>

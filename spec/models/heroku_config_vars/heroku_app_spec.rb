@@ -79,7 +79,8 @@ module HerokuConfigVars
 
         it { should be_valid }
         it { should_not be_loaded }
-        its(:vars) { should be_empty }
+        its(:vars) { should include 'HEROKU_APP_NAME' }
+        its(:vars) { should include 'HEROKU_API_KEY' }
       end
     end
 

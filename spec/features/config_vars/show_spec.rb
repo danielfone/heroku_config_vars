@@ -2,29 +2,11 @@ require 'spec_helper'
 
 feature "Show heroku config vars" do
 
-### TODO: extract into helper
-  let(:valid_app_name) { 'valid_app_name' }
-  let(:valid_api_key)  { 'valid_api_key' }
-  let(:valid_auth)     { 'Basic ' << Base64::strict_encode64(':' << valid_api_key) }
-  let(:live_vars)      { Hash.new }
-
-
-  before do
-    stub_request(:get, "https://api.heroku.com/apps/#{valid_app_name}/config_vars").
-      with(headers: { 'Authorization' => valid_auth }).
-      to_return(body: live_vars.to_json)
-  end
-
-###
+  stub_heroku_responses
 
   before do
     ENV['HEROKU_APP_NAME'] = valid_app_name
     ENV['HEROKU_API_KEY']  = valid_api_key
-  end
-
-  after do
-    ENV.delete 'HEROKU_APP_NAME'
-    ENV.delete 'HEROKU_API_KEY'
   end
 
   let(:live_vars) do
