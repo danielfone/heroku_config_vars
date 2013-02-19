@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <h1>Heroku Configurator</h1>
+
+  <ul class="submenu">
+    <li><%= menu_link 'Heroku Configuration Variables', heroku_app_path %></li>
+    <li><%= menu_link 'Native Environment', env_path %></li>
+  </ul>
 
 <%= yield %>
 

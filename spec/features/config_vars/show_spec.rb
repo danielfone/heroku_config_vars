@@ -36,5 +36,8 @@ feature "Show heroku config vars" do
     expect(page).to have_selector 'tr:nth(4) td', text: 'value 4'
 
     expect(page).to have_link 'Edit', href: edit_heroku_app_path
+
+    # check for menu
+    expect(page).to have_selector 'li', text: 'Heroku Configuration Variables'
   end
 end
