@@ -9,9 +9,6 @@ class HerokuConfigVars::ApplicationController < ApplicationController
     @env = ENV
   end
 
-  protected
-
-
   private
 
     def require_authenticated
