@@ -1,7 +1,9 @@
 class HerokuConfigVars::ApplicationController < ApplicationController
 
-  before_filter :require_authenticated
   before_filter :recommend_https, :if => :insecure?
+  before_filter :require_authenticated
+
+  layout 'heroku_config_vars/application'
 
   AUTH_METHOD = :heroku_config_authorized?
 
@@ -29,8 +31,8 @@ class HerokuConfigVars::ApplicationController < ApplicationController
             ...
           end
         ERROR
-      elsif not heroku_config_authorized?
-        raise ActionController::RoutingError.new ':heroku_config_authorized? returned false'
+      elsif not send AUTH_METHOD
+        raise ActionController::RoutingError.new ":#{AUTH_METHOD} returned false"
       end
     end
 
