@@ -6,6 +6,8 @@ module HerokuResponses
       let(:valid_api_key)  { 'valid_api_key' }
       let(:valid_auth)     { 'Basic ' << Base64::strict_encode64(':' << valid_api_key) }
       let(:live_vars)      { {"HEROKU_APP_NAME" => valid_app_name, "HEROKU_API_KEY" => valid_api_key } }
+      let(:set_vars)       { Hash.new }
+      let(:delete_var)     { '' }
 
       before do
         stub_request(:get, "https://api.heroku.com/apps/#{valid_app_name}/config_vars").
@@ -14,7 +16,11 @@ module HerokuResponses
 
         stub_request(:put, "https://api.heroku.com/apps/#{valid_app_name}/config_vars").
           with(headers: { 'Authorization' => valid_auth }).
-          with(body: live_vars.to_json).
+          with(body: set_vars.to_json).
+          to_return(:status => 200, :body => "", :headers => {})
+
+        stub_request(:delete, "https://api.heroku.com/apps/#{valid_app_name}/config_vars/#{delete_var}").
+          with(headers: { 'Authorization' => valid_auth }).
           to_return(:status => 200, :body => "", :headers => {})
       end
     end

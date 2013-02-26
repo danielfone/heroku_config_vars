@@ -14,13 +14,7 @@ feature 'Edit Herkou configuration' do
     }
   end
 
-  scenario 'Click edit link' do
-    visit heroku_app_url(protocol: 'https')
-    click_link 'Edit'
-
-    expect(current_path).to eq edit_heroku_app_path
-  end
-
+  # TODO: move most of this into a view spec
   scenario 'Vist the edit page' do
     visit edit_heroku_app_url(protocol: 'https')
 
@@ -44,6 +38,65 @@ feature 'Edit Herkou configuration' do
 
     expect(page).to have_button 'Prepare...'
     expect(page).to have_link 'Cancel', href: heroku_app_path
+  end
+
+## ----
+
+  let(:set_vars) do
+    {
+      "VAR2" => "value 2 updated",
+      "NEW_KEY" => "a new value"
+    }
+  end
+
+  let(:delete_var) { 'VAR1' }
+
+  def visit_form
+    visit heroku_app_url(protocol: 'https')
+    click_link 'Edit'
+  end
+
+  def cancel
+    click_link 'Cancel'
+  end
+
+  def fill_out_form
+    fill_in 'VAR2', with: 'value 2 updated'
+    within 'tr:first' do |variable|
+      check 'Delete'
+    end
+    fill_in 'add[][key]',   with: 'NEW_KEY'
+    fill_in 'add[][value]', with: 'a new value'
+    click_button 'Prepare...'
+    # expect the changes to displayed
+  end
+
+  def confirm
+    click_button 'Update and restart app'
+    # expect the vars to be updated
+  end
+
+  scenario 'Cancel update' do
+    visit_form
+    cancel
+
+    expect(current_path).to eq heroku_app_path
+  end
+
+  scenario 'Update vars and confirm' do
+    visit_form
+    fill_out_form
+    confirm
+
+    expect(current_path).to eq edit_heroku_app_path
+  end
+
+  scenario 'Update vars and cancel' do
+    visit_form
+    fill_out_form
+    cancel
+
+    expect(current_path).to eq edit_heroku_app_path
   end
 
 end

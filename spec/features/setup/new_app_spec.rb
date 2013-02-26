@@ -4,6 +4,8 @@ feature 'New app' do
 
   stub_heroku_responses
 
+  let(:set_vars) { live_vars }
+
   scenario 'Visit root without ENV set' do
     visit root_url(protocol: 'https')
 

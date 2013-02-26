@@ -1,0 +1,73 @@
+<h2>Please confirm...</h2>
+
+<%- if @heroku_app.changes.any? %>
+  <%- if @heroku_app.added_vars.any? -%>
+    <h3>These configuration variables will be added:</h3>
+    <table>
+      <%- @heroku_app.added_vars.each do |key, value| -%>
+        <tr>
+          <th>
+            <%= key %>
+          </th>
+          <td>
+            <%= value %>
+          </td>
+        </tr>
+      <%- end -%>
+    </table>
+  <%- end -%>
+
+  <%- if @heroku_app.updated_vars.any? -%>
+    <h3>These configuration variables will be updated:</h3>
+    <table>
+      <%- @heroku_app.updated_vars.each do |key, value| -%>
+        <tr>
+          <th>
+            <%= key %>
+          </th>
+          <td>
+            <%= @heroku_app.current_vars[key] %>
+          </td>
+          <td>
+            &rarr;
+          </td>
+          <td>
+            <%= value %>
+          </td>
+        </tr>
+      <%- end -%>
+    </table>
+  <%- end -%>
+
+  <%- if @heroku_app.removed_vars.any? -%>
+    <h3>These configuration variables will be removed:</h3>
+    <table>
+      <%- @heroku_app.removed_vars.each do |key, value| -%>
+        <tr class="deleted">
+          <th>
+            <%= key %>
+          </th>
+          <td>
+            <%= value %>
+          </td>
+        </tr>
+      <%- end -%>
+    </table>
+  <%- end -%>
+
+  <%= form_for @heroku_app, url: {confirmation: true} do |f| %>
+    <%- @heroku_app.vars.each do |key, value| -%>
+      <%= hidden_field_tag "heroku_app[vars][#{key}]", value %>
+    <%- end -%>
+
+    <p>
+      <%= submit_tag "Update and restart app" %>
+    </p>
+  <%- end -%>
+
+<%- else -%>
+  <p>No changes made.</p>
+<%- end -%>
+
+
+<p><%= link_to 'Cancel', edit_heroku_app_path %></p>
