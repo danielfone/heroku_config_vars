@@ -9,3 +9,7 @@ TODO
     current_user.admin?
   end
 4. Visit /whatever and enter your heroku details
+
+Mention thing about
+
+    new_session_path -> main_app.new_session_path

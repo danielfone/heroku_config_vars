@@ -1,8 +1,10 @@
 module HerokuConfigVars
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController
 
-    before_filter :recommend_https, :if => :insecure?
     before_filter :require_authenticated
+    before_filter :recommend_https, :if => :insecure? 
+
+    layout 'heroku_config_vars/application'
 
     def env
       @env = ENV
@@ -12,18 +14,28 @@ module HerokuConfigVars
 
     def require_authenticated
       # raising RoutingError will render 404 in production
-      if not HerokuConfigVars.authorization_block.respond_to? :call
+      if not respond_to? HerokuConfigVars.authorization_method
         raise ActionController::RoutingError.new <<-ERROR.strip_heredoc
-          No authorization block provided. e.g.
+          `#{HerokuConfigVars.authorization_method}` must be implemented in ApplicationController and return true for authorized users.
+          
+           e.g.
+           class ApplicationController < ActionController::Base
+             ...
+             
+             def #{HerokuConfigVars.authorization_method}
+               current_user.admin?
+             end
+             
+             ...
+           end
 
-          # config/initializers/heroku_config_vars.rb
-
-          # This is evaluated in the context of the controller
-          HerokuConfigVars.authorize do
-            user = User.find(session[:user_id]) and user.admin?
-          end
+           You can change the name of this method. e.g.
+           
+           # config/initializers/heroku_config_vars.rb
+           HerokuConfigVars.authorization_method = :my_other_auth?
+           
         ERROR
-      elsif not instance_exec &HerokuConfigVars.authorization_block
+      elsif not send HerokuConfigVars.authorization_method
         raise ActionController::RoutingError.new "Authorisation block returned false"
       end
     end

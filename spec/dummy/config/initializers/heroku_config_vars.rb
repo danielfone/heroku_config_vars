@@ -1,3 +1,1 @@
-HerokuConfigVars.authorize do
-  params[:admin] != 'false'
-end
+HerokuConfigVars.authorization_method = :heroku_config_auth?
