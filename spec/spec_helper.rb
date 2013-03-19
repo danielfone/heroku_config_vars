@@ -29,7 +29,6 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.include HerokuConfigVars::Engine.routes.url_helpers
   config.extend HerokuResponses::ClassMethods
 
   config.after do

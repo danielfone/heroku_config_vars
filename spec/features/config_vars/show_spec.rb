@@ -15,7 +15,7 @@ feature "Show heroku config vars" do
   end
 
   scenario "Visit vars path" do
-    visit heroku_app_url(protocol: 'https')
+    visit heroku_config_vars.heroku_app_url(protocol: 'https')
 
     expect(page).to have_selector 'h2', text: valid_app_name
 
@@ -31,7 +31,7 @@ feature "Show heroku config vars" do
     expect(page).to have_selector 'tr:nth(4) th', text: 'VAR4'
     expect(page).to have_selector 'tr:nth(4) td', text: 'value 4'
 
-    expect(page).to have_link 'Edit', href: edit_heroku_app_path
+    expect(page).to have_link 'Edit', href: heroku_config_vars.edit_heroku_app_path
 
     # check for menu
     expect(page).to have_selector 'li', text: 'Heroku Configuration Variables'

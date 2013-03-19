@@ -16,10 +16,10 @@ feature 'Edit Herkou configuration' do
 
   # TODO: move most of this into a view spec
   scenario 'Vist the edit page' do
-    visit edit_heroku_app_url(protocol: 'https')
+    visit heroku_config_vars.edit_heroku_app_url(protocol: 'https')
 
     within 'h2' do
-      expect(page).to have_link valid_app_name, href: heroku_app_path
+      expect(page).to have_link valid_app_name, href: heroku_config_vars.heroku_app_path
       expect(page).to have_text "Edit Configuration"
     end
 
@@ -37,7 +37,7 @@ feature 'Edit Herkou configuration' do
     end
 
     expect(page).to have_button 'Prepare...'
-    expect(page).to have_link 'Cancel', href: heroku_app_path
+    expect(page).to have_link 'Cancel', href: heroku_config_vars.heroku_app_path
   end
 
 ## ----
@@ -52,7 +52,7 @@ feature 'Edit Herkou configuration' do
   let(:delete_var) { 'VAR1' }
 
   def visit_form
-    visit heroku_app_url(protocol: 'https')
+    visit heroku_config_vars.heroku_app_url(protocol: 'https')
     click_link 'Edit'
   end
 
@@ -80,7 +80,7 @@ feature 'Edit Herkou configuration' do
     visit_form
     cancel
 
-    expect(current_path).to eq heroku_app_path
+    expect(current_path).to eq heroku_config_vars.heroku_app_path
   end
 
   scenario 'Update vars and confirm' do
@@ -88,7 +88,7 @@ feature 'Edit Herkou configuration' do
     fill_out_form
     confirm
 
-    expect(current_path).to eq edit_heroku_app_path
+    expect(current_path).to eq heroku_config_vars.edit_heroku_app_path
   end
 
   scenario 'Update vars and cancel' do
@@ -96,7 +96,7 @@ feature 'Edit Herkou configuration' do
     fill_out_form
     cancel
 
-    expect(current_path).to eq edit_heroku_app_path
+    expect(current_path).to eq heroku_config_vars.edit_heroku_app_path
   end
 
 end
