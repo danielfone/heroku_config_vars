@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.0"
+  s.add_dependency 'sass-rails', '~> 3.2'
   s.add_dependency "heroku-api", "~> 0.3"
 
   s.add_development_dependency "rails", "~> 3.2.0"
@@ -24,5 +25,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'webmock', '~> 1.10.0' # 1.11 is incompatible with heroku-api 0.3.8 (via excon) *sigh*
   s.add_development_dependency 'capybara', '~> 2.0.0'
   s.add_development_dependency 'launchy', '~> 2.2.0'
-  s.add_development_dependency 'sass-rails', '~> 3.2.0'
 end

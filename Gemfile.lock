@@ -4,6 +4,7 @@ PATH
     heroku_config_vars (1.0.0)
       heroku-api (~> 0.3)
       rails (~> 3.0)
+      sass-rails (~> 3.2)
 
 GEM
   remote: http://rubygems.org/
@@ -146,5 +147,4 @@ DEPENDENCIES
   launchy (~> 2.2.0)
   rails (~> 3.2.0)
   rspec-rails (~> 2.13.0)
-  sass-rails (~> 3.2.0)
   webmock (~> 1.10.0)
