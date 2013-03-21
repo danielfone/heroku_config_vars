@@ -12,7 +12,8 @@ This engine allows you to manage Heroku configuration variables from within your
 2. Add `mount HerokuConfigVars::Engine => "/heroku_config_vars"` to your routes.rb
 3. Implement the method `:heroku_config_vars_authorized?` on your ApplicationController. (See [Customization](#customization))
 4. To make authorization easy, this engine inherits from your ApplicationController.
-This means that you may have to change named routes to be more specific. e.g.
+This means that you may have to change named routes to be more specific,
+otherwise the url_helper will raise a `ActionController::RoutingError`. e.g.
 
 ```diff
  class ApplicationController < ActionController::Base
