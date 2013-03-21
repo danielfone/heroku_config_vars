@@ -1,5 +1,9 @@
 # HerokuConfigVars
 
+[![Build Status](https://travis-ci.org/danielfone/heroku_config_vars.png?branch=master)](https://travis-ci.org/danielfone/heroku_config_vars)
+[![Dependency Status](https://gemnasium.com/danielfone/heroku_config_vars.png)](https://gemnasium.com/danielfone/heroku_config_vars)
+
+
 This engine allows you to manage Heroku configuration variables from within your application.
 
 ## Installation into your application
