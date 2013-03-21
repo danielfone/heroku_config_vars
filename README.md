@@ -26,6 +26,13 @@ otherwise the url_helper will raise a `ActionController::RoutingError`. e.g.
  end
 ```
 
+## Security
+
+HerokuConfigVars aims to be secure by default.
+
+* Every request needs to be authorized by your application.
+* Non SSL requests are confirmed by the user before they're loaded.
+
 ## Setup
 
 0. (Test it works in development)
