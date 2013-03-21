@@ -27,6 +27,7 @@ This means that you may have to change named routes to be more specific. e.g.
 
 ## Setup
 
+0. (Test it works in development)
 1. Deploy your app to Heroku
 2. Visit /heroku_config_vars
 3. Enter valid Heroku credentials for your application.
