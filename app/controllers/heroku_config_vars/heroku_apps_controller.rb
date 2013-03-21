@@ -1,5 +1,5 @@
 module HerokuConfigVars
-  class HerokuAppsController < ApplicationController
+  class HerokuAppsController < HerokuConfigVars::ApplicationController
 
     before_filter :require_heroku_app, :only => [:show, :edit, :update]
 
