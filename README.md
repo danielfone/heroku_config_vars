@@ -1,5 +1,6 @@
 # HerokuConfigVars
 
+[![Gem Version](https://badge.fury.io/rb/heroku_config_vars.png)](https://rubygems.org/gems/heroku_config_vars)
 [![Build Status](https://travis-ci.org/danielfone/heroku_config_vars.png?branch=master)](https://travis-ci.org/danielfone/heroku_config_vars)
 [![Dependency Status](https://gemnasium.com/danielfone/heroku_config_vars.png)](https://gemnasium.com/danielfone/heroku_config_vars)
 [![Code Climate](https://codeclimate.com/github/danielfone/heroku_config_vars.png)](https://codeclimate.com/github/danielfone/heroku_config_vars)
