@@ -25,5 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'webmock', '~> 1.10.0' # 1.11 is incompatible with heroku-api 0.3.8 (via excon) *sigh*
   s.add_development_dependency 'capybara', '~> 2.0.0'
   s.add_development_dependency 'launchy', '~> 2.2.0'
-  s.add_development_dependency 'simplecov', '~> 0.7.1'
+  s.add_development_dependency 'coveralls'
 end
