@@ -35,6 +35,8 @@ HerokuConfigVars aims to be secure by default.
 * Every request needs to be authorized by your application.
 * Non SSL requests are confirmed by the user before they're loaded.
 
+That said, this engine will open up another vector for your (potentially sensitive) application configuration to be accessed.
+
 ## Setup
 
 0. (Test it works in development)
