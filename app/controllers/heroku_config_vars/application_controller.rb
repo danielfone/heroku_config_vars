@@ -14,7 +14,7 @@ module HerokuConfigVars
 
     def require_authenticated
       # raising RoutingError will render 404 in production
-      if not respond_to? HerokuConfigVars.authorization_method
+      if not respond_to? HerokuConfigVars.authorization_method, true
         raise ActionController::RoutingError.new <<-ERROR.strip_heredoc
           `#{HerokuConfigVars.authorization_method}` must be implemented in ApplicationController and return true for authorized users.
           
