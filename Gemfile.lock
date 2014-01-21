@@ -158,6 +158,5 @@ DEPENDENCIES
   heroku_config_vars!
   jquery-rails
   launchy (~> 2.2.0)
-  rails (~> 3.2.0)
   rspec-rails (~> 2.13.0)
   webmock (~> 1.10.0)
