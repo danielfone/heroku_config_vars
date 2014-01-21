@@ -1,8 +1,5 @@
 require File.expand_path('../boot', __FILE__)
-
 require "action_controller/railtie"
-
-Bundler.require
 require "heroku_config_vars"
 
 module Dummy
