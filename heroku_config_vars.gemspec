@@ -16,12 +16,12 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 3.0"
+  s.add_dependency 'rails', '~> 3.0'
   s.add_dependency 'sass-rails', '~> 3.2'
-  s.add_dependency "heroku-api", "~> 0.3"
+  s.add_dependency 'heroku-api', '~> 0.3'
 
-  s.add_development_dependency "rspec-rails", "~> 2.13.0"
-  s.add_development_dependency 'webmock', '~> 1.10.0' # 1.11 is incompatible with heroku-api 0.3.8 (via excon) *sigh*
-  s.add_development_dependency 'capybara', '~> 2.0.0'
+  s.add_development_dependency 'rspec-rails', '~> 2.14.0'
+  s.add_development_dependency 'webmock', '~> 1.17.0'
+  s.add_development_dependency 'capybara', '~> 2.2.0'
   s.add_development_dependency 'coveralls'
 end
