@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_runtime_dependency 'rails', '~> 4.0'
+  s.add_runtime_dependency 'rails', '>= 3.1'
   s.add_runtime_dependency 'sass-rails'
   s.add_runtime_dependency 'heroku-api', '~> 0.3'
 
@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'webmock', '~> 1.17.0'
   s.add_development_dependency 'capybara', '~> 2.2.0'
   s.add_development_dependency 'coveralls', '~> 0.7.0'
+  s.add_development_dependency 'appraisal', '~> 0.5.2'
 end

@@ -3,7 +3,7 @@ PATH
   specs:
     heroku_config_vars (1.0.2)
       heroku-api (~> 0.3)
-      rails (~> 4.0)
+      rails (>= 3.1)
       sass-rails
 
 GEM
@@ -34,6 +34,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    appraisal (0.5.2)
+      bundler
+      rake
     arel (4.0.1)
     atomic (1.1.14)
     builder (3.1.4)
@@ -142,6 +145,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appraisal (~> 0.5.2)
   capybara (~> 2.2.0)
   coveralls (~> 0.7.0)
   heroku_config_vars!
