@@ -3,7 +3,6 @@ rvm:
   - 2.1.0
   - 2.0.0
   - 1.9.3
-  - 1.9.2
 gemfile:
   - gemfiles/rails_3_1.gemfile
   - gemfiles/rails_3_2.gemfile
