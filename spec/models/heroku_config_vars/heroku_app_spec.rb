@@ -39,10 +39,11 @@ module HerokuConfigVars
     end
 
     context 'with no args' do
+      before { app.valid? }
 
       it { should_not be_valid }
-      it { should have(1).error_on(:app_name) }
-      it { should have(1).error_on(:api_key) }
+      its(:errors) { should have_key(:app_name) }
+      its(:errors) { should have_key(:api_key) }
       it { should_not be_loaded }
       its(:vars) { should be_empty }
     end

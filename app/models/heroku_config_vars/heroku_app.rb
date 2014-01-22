@@ -96,7 +96,9 @@ module HerokuConfigVars
     end
 
     def changes
-      @changes ||= vars.diff current_vars
+      @changes ||= vars.dup.
+        delete_if { |k, v| current_vars[k] == v }.
+        merge!(current_vars.dup.delete_if { |k, v| vars.has_key?(k) })
     end
 
     private
