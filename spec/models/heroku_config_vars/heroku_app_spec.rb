@@ -42,8 +42,8 @@ module HerokuConfigVars
       before { app.valid? }
 
       it { should_not be_valid }
-      its(:errors) { should have_key(:app_name) }
-      its(:errors) { should have_key(:api_key) }
+      its(:errors) { should include(:app_name) }
+      its(:errors) { should include(:api_key) }
       it { should_not be_loaded }
       its(:vars) { should be_empty }
     end
