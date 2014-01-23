@@ -42,8 +42,8 @@ module HerokuConfigVars
       before { app.valid? }
 
       it { should_not be_valid }
-      its(:errors) { should include(:app_name) }
-      its(:errors) { should include(:api_key) }
+      its(:errors) { should include :app_name }
+      its(:errors) { should include :api_key }
       it { should_not be_loaded }
       its(:vars) { should be_empty }
     end
@@ -77,7 +77,7 @@ module HerokuConfigVars
           { app_name: 'xxx', api_key: valid_api_key }
         end
 
-        its(:errors) { should have_key :app_name }
+        its(:errors) { should include :app_name }
       end
 
       context 'with unauthorized app name' do
@@ -85,7 +85,7 @@ module HerokuConfigVars
           { app_name: other_app_name, api_key: valid_api_key }
         end
 
-        its(:errors) { should have_key :app_name }
+        its(:errors) { should include :app_name }
       end
 
       context 'with invalid api key' do
@@ -93,7 +93,7 @@ module HerokuConfigVars
           { app_name: valid_app_name, api_key: 'xxx' }
         end
 
-        its(:errors) { should have_key :api_key }
+        its(:errors) { should include :api_key }
       end
 
       context 'when heroku is down'
